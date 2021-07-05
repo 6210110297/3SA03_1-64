@@ -36,6 +36,7 @@ export default function WordCard(props) {
 
     return (
         <div>
+            <div> {state.completed?'You WIN':`Total Attemps: ${state.attempt}`} </div>
             {state.chars.map((c, i) => <CharacterCard value={c} key={i} activationHandler={activationHandler} attempt={state.attempt}/>)}
         </div>
     );
