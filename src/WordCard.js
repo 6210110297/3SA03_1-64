@@ -13,10 +13,11 @@ const prepareStateFromWord = (given_word) => {
         completed: false
     }
 }
+var index=0;
 
 export default function WordCard(props) {
 
-    const [state, setState] = useState(prepareStateFromWord(props.value))
+    const [state, setState] = useState(prepareStateFromWord(props.value[index]))
 
     
     const activationHandler = c => {
@@ -38,7 +39,8 @@ export default function WordCard(props) {
 
     const resetGame =() =>{
         console.log('Reset Game')
-        setState(prepareStateFromWord(props.value))
+        index= Math.floor(Math.random()*5)
+        setState(prepareStateFromWord(props.value[index]))
     }
 
     if(!state.completed){
@@ -61,3 +63,4 @@ export default function WordCard(props) {
     }
     
 }
+
