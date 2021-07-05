@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import _ from 'lodash';
+import _, { attempt } from 'lodash';
 import CharacterCard from './CharacterCard';
 
 const prepareStateFromWord = (given_word) => {
@@ -9,6 +9,18 @@ const prepareStateFromWord = (given_word) => {
         word,
         chars,
         attempt: 1,
+        guess: '',
+        completed: false
+    }
+}
+const prepareNewWord = (given_word,state)=>{
+    let word = given_word.toUpperCase()
+    let chars = _.shuffle(Array.from(word))
+    return {
+        ...state,
+        word,
+        chars,
+        attempt: state.attempt,
         guess: '',
         completed: false
     }
@@ -43,18 +55,28 @@ export default function WordCard(props) {
         setState(prepareStateFromWord(props.value[index]))
     }
 
+    const changeWord =()=>{
+        console.log('change word')
+        index= Math.floor(Math.random()*5)
+        setState(prepareNewWord(props.value[index],state))
+    }
+
+    var changeButton=<div className={'button'}><button onClick={changeWord}>ChangeWord</button></div>
+
     if(!state.completed){
         return (
             <div>
-                <div> {state.completed?'You WIN':`Total Attemps: ${state.attempt}`} </div>
+                <div className={'headText'}> {state.completed?'You WIN':`Total Attemps: ${state.attempt}`} </div>
                 {state.chars.map((c, i) => <CharacterCard value={c} key={i} activationHandler={activationHandler} attempt={state.attempt}/>)}
+                {changeButton}
             </div>
+            
         );
     }else{
         return(
             <div>
-                <div className={'activeCard'}>You WIN with {state.attempt} attempts CONGRATS</div>
-                <div>
+                <div className={'headText'}>You WIN with {state.attempt} attempts CONGRATS</div>
+                <div className={'button'}>
                 <button onClick={resetGame}>Reset</button>
                 </div>
                 
