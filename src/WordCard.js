@@ -25,7 +25,7 @@ const prepareNewWord = (given_word,state)=>{
         completed: false
     }
 }
-var index=0;
+var index=Math.floor(Math.random()*5);
 
 export default function WordCard(props) {
 
