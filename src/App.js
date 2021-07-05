@@ -1,13 +1,15 @@
-import CharacterCard from './CharacterCard';
-function App() {
-const word = "Hello";
- return (
- <div>{
-  Array.from(word).map((c, i) => <CharacterCard value={c} key={i}/>)
+import './App.css';
+import WordCard from './WordCard';
 
-   }
-   </div>
- );
+const word = "Hello";
+function App() {
+    return (
+        <div>
+        <WordCard value="hello"/>
+        </div>
+        );
+       
 }
+
 
 export default App;
