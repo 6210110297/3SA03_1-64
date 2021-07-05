@@ -53,7 +53,7 @@ export default function WordCard(props) {
     }else{
         return(
             <div>
-                You WIN with {state.attempt} attempts CONGRATS
+                <div className={'activeCard'}>You WIN with {state.attempt} attempts CONGRATS</div>
                 <div>
                 <button onClick={resetGame}>Reset</button>
                 </div>

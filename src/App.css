@@ -42,6 +42,13 @@
   color: red;
   background: pink;
  }
+
+ .headText{
+   text-align: center;
+   font-size: large;
+   color: aqua;
+   margin: 1em;
+ }
  
  
 

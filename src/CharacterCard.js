@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 export default function CharacterCard(props) {
+
     const [active, setActive] = useState(false);
     const attemptRef = useRef(props.attemp);
 
@@ -18,9 +19,16 @@ export default function CharacterCard(props) {
         }
     })
 
+    
+
     const className = `card ${active ? 'activeCard' : ''}`
+
+    var card=<div className={className} onClick={activate}>{props.value}</div>
+	
+   
+	
     return (
-        <div className={className} onClick={activate}>{props.value}</div>
-    )
+        card
+        )
 
 }
