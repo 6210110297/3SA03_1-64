@@ -46,8 +46,16 @@
  .headText{
    text-align: center;
    font-size: large;
+   font-style:unset;
    margin: 1em;
-   
+   background: rgb(196, 196, 196);
+ }
+
+ .buttomText{
+   margin-top: 50px;
+  text-align: center;
+  font-size: large;
+  
  }
 
  .button{

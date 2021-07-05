@@ -40,7 +40,7 @@ export default function WordCard(props) {
         if (guess.length === state.word.length) {
             if (guess === state.word && !state.completed) {
                 console.log('yeah!')
-                setState({ ...state, guess: '', completed: true })
+                setState({ ...state, completed: true })
             
             }else {
                 console.log('reset')
@@ -62,20 +62,21 @@ export default function WordCard(props) {
     }
 
     var changeButton=<div className={'button'}><button onClick={changeWord}>ChangeWord</button></div>
-
+    
     if(!state.completed){
         return (
             <div>
-                <div className={'headText'}> {state.completed?'You WIN':`Total Attemps: ${state.attempt}`} </div>
+                <div className={'headText'}> {`Total Attemps: ${state.attempt}`} </div>
                 {state.chars.map((c, i) => <CharacterCard value={c} key={i} activationHandler={activationHandler} attempt={state.attempt}/>)}
                 {changeButton}
+                <div className={'buttomText'}>{state.guess}</div>
             </div>
             
         );
     }else{
         return(
             <div>
-                <div className={'headText'}>You WIN with {state.attempt} attempts CONGRATS</div>
+                <div className={'headText'}>You WIN   with {state.attempt} attempts CONGRATS</div>
                 <div className={'button'}>
                 <button onClick={resetGame}>Reset</button>
                 </div>
